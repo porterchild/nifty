@@ -1,12 +1,22 @@
+// swift-tools-version:5.3
 import PackageDescription
 
 let package = Package(
     name: "Nifty",
-    dependencies: [
-        .Package(url: "https://github.com/nifty-swift/Nifty-libs.git", majorVersion: 1),
+    products: [
+      .library(name: "Nifty", targets: ["Nifty"]),
     ],
-    exclude: [
-    	"Tests/KnownResults",
+    dependencies: [
+        .package(url: "https://github.com/porterchild/Nifty-libs.git", .branch("master")),
+    ],
+    targets: [
+        .target(
+            name: "Nifty",
+            dependencies: [
+                .product(name: "CLapacke", package: "Nifty-libs"),
+                .product(name: "CBlas", package: "Nifty-libs"),
+            ]
+        ),
+        .testTarget(name: "NiftyTests", dependencies: ["Nifty"], path: "Tests")
     ]
-
 )

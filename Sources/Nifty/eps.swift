@@ -22,4 +22,4 @@
 // See the Wikipedia article on "Machine Epsilon": https://en.wikipedia.org/wiki/Machine_epsilon.
 // These values match those used by MATLAB.
 
-public let eps: (single: Double, double: Double) = (single: 2**(-23), double: 2**(-52))
+public let eps: (single: Double, double: Double) = (single: pow(2, -23), double: pow(2, -52))

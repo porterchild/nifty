@@ -189,7 +189,13 @@ internal func _formatElement<T>(_ element: T, _ format: NumberFormatter) -> Stri
     {
         case is Double:  doubleValue = (element as! Double)
         case is Float:   doubleValue = Double(element as! Float)
+        // Float80 not available under certian conditions (like aarch64)
+        // see also https://bugs.swift.org/browse/SR-6009
+        /* couldn't make this condition work easily, so commenting out for now
+        #if !os(Windows) && (arch(i386) || arch(x86_64))
         case is Float80: doubleValue = Double(element as! Float80)
+        #endif
+        */
         case is Int:     doubleValue = Double(element as! Int)
         case is Int8:    doubleValue = Double(element as! Int8)
         case is Int16:   doubleValue = Double(element as! Int16)

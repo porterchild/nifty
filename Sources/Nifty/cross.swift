@@ -37,7 +37,7 @@ public func cross(_ a: Vector<Double>, _ b: Vector<Double>) -> Vector<Double>
     var showName: Bool? = nil
     if let nameA = a.name, let nameB = b.name
     {
-        name = "cross\(nameA, nameB)"
+        name = "cross\(nameA)\(nameB)"
         showName = a.showName && b.showName
     }
 

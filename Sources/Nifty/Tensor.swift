@@ -288,7 +288,7 @@ public struct Tensor<Element>: TensorProtocol
         precondition(sliceSize == value.size, "Provided data must match tensor slice size")        
 
         // start writing to matrix, rolling over each dimension
-        var newData = value.data
+        let newData = value.data
         var curSub = startSub
         for i in 0..<newData.count
         {
